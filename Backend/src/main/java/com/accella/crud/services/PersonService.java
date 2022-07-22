@@ -1,5 +1,7 @@
 package com.accella.crud.services;
 
+import java.util.List;
+
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,12 @@ public class PersonService {
 
 	@Autowired
 	public PersonRepository repository;
+
+	@Transactional(readOnly = true)
+	public List<Person> findAll() {
+		List<Person> list = repository.findAll();
+		return list;
+	}
 
 	@Transactional
 	public Person insert(Person per) {

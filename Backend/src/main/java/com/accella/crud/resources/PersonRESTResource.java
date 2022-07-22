@@ -5,7 +5,9 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,12 +31,12 @@ public class PersonRESTResource {
 		return ResponseEntity.created(uri).body(person);
 	}
 	
-//	@PutMapping(value = "/{id}")
-//	public ResponseEntity<Person> update(@PathVariable Long id, @RequestBody Person person){
-//		person = service.update(id, person);
-//		return ResponseEntity.noContent().build();
-//	}
-//	
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Person> update(@PathVariable Long id, @RequestBody Person person) throws Exception{
+		person = service.update(id, person);
+		return ResponseEntity.ok().body(person);
+	}
+	
 //	@DeleteMapping(value = "/{id}")
 //	public ResponseEntity<Person> delete(@PathVariable Long id){
 //		service.delete(id);

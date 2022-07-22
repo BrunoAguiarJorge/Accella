@@ -1,12 +1,10 @@
 package com.accella.crud.resources;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.accella.crud.entities.Person;
 import com.accella.crud.entities.PersonAddress;
 import com.accella.crud.services.AddressService;
 
@@ -25,8 +22,6 @@ public class AddressRESTResource {
 
 	@Autowired
 	private AddressService service;
-
-	
 
 	@PostMapping
 	public ResponseEntity<PersonAddress> insert(@RequestBody PersonAddress perAddress) {
@@ -40,11 +35,10 @@ public class AddressRESTResource {
 		perAddress = service.update(id, perAddress);
 		return ResponseEntity.ok().body(perAddress);
 	}
-//
-//	@DeleteMapping(value = "/{id}")
-//	public ResponseEntity<PersonAddress> delete(@PathVariable Long id) throws Exception{
-//		service.delete(id);
-//		return ResponseEntity.noContent().build();
-//	}
-//	
+
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<PersonAddress> delete(@PathVariable Long id) throws Exception{
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }

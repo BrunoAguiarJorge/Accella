@@ -1,11 +1,14 @@
 package com.accella.crud.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class PersonAddress implements Serializable {
@@ -19,11 +22,13 @@ public class PersonAddress implements Serializable {
 	private String state;
 	private int postalCode;
 
+	@ManyToMany(mappedBy = "addresses")
+	private Set<Person> persons = new HashSet<>();
+	
 	public PersonAddress() {
 	}
 
 	public PersonAddress(Long id, String street, String city, String state, int postalCode) {
-		super();
 		this.id = id;
 		this.street = street;
 		this.city = city;

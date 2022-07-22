@@ -45,9 +45,8 @@ public class PersonRESTResource {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Person> delete(@PathVariable Long id) throws Exception{
+	public ResponseEntity<Person> delete(@PathVariable Long id) throws Exception {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
 }

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_client")
+@Table(name = "tb_person")
 public class Person  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -24,7 +24,6 @@ public class Person  implements Serializable{
 		}
 
 		public Person(Long id, String firstName, String lastName) {
-			super();
 			this.id = id;
 			this.firstName = firstName;
 			this.lastName = lastName;

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +43,15 @@ public class PersonService {
 			person = repository.save(person);
 			return person;
 		} catch (EntityNotFoundException e) {
+			throw new Exception("Id not found " + id);
+		}
+	}
+	
+	public void delete(Long id) throws Exception {
+		try {
+			repository.deleteById(id);
+		}
+		catch (EmptyResultDataAccessException e) {
 			throw new Exception("Id not found " + id);
 		}
 	}

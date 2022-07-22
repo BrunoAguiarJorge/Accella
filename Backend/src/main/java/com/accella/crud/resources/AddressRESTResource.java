@@ -35,11 +35,11 @@ public class AddressRESTResource {
 		return ResponseEntity.created(uri).body(perAddress);
 	}
 
-//	@PutMapping(value = "/{id}")
-//	public ResponseEntity<Person> update(@PathVariable Long id, @RequestBody Person person) throws Exception {
-//		person = service.update(id, person);
-//		return ResponseEntity.ok().body(person);
-//	}
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<PersonAddress> update(@PathVariable Long id, @RequestBody PersonAddress perAddress) throws Exception {
+		perAddress = service.update(id, perAddress);
+		return ResponseEntity.ok().body(perAddress);
+	}
 //
 //	@DeleteMapping(value = "/{id}")
 //	public ResponseEntity<PersonAddress> delete(@PathVariable Long id) throws Exception{

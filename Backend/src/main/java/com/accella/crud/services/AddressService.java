@@ -29,18 +29,19 @@ public class AddressService {
 		address.setPostalCode(perAddress.getPostalCode());
 		address = repository.save(address);
 		return address;
-//	}
-//	@Transactional
-//	public PersonAddress update(Long id, PersonAddress addr) throws Exception {
-//
-//		PersonAddress address = repository.getReferenceById(id);
-//		address.setCity(addr.getCity());
-//		address.setStreet(addr.getStreet());
-//		address.setState(addr.getState());
-//		address.setPostalCode(addr.getPostalCode());
-//		return address;
-//
-//	}
+	}
+	@Transactional
+	public PersonAddress update(Long id, PersonAddress addr) throws Exception {
+
+		PersonAddress address = repository.getReferenceById(id);
+		address.setCity(addr.getCity());
+		address.setStreet(addr.getStreet());
+		address.setState(addr.getState());
+		address.setPostalCode(addr.getPostalCode());
+		address = repository.save(addr);
+		return address;
+
+	
 //
 //	public void delete(Long id) throws Exception {
 //		try {

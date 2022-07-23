@@ -14,14 +14,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 @Entity
 @Table(name = "tb_person")
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -29,21 +26,20 @@ public class Person implements Serializable {
 	private String lastName;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "tb_person_address", joinColumns = @JoinColumn(name = "person_id"), 
-	inverseJoinColumns = @JoinColumn(name = "address_id"))
+	@JoinTable(name = "tb_person_address", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
 	List<PersonAddress> addresses = new ArrayList<>();
 
-	public Person() {}
-	
+	public Person() {
+	}
+
 	public Person(Long id, String firstName, String lastName) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 
-		public Person(PersonAddress entity, List<PersonAddress> addresses) {
-
-		addresses.forEach(cat -> this.addresses.add((PersonAddress) addresses));
+	public Person(PersonAddress entity, List<PersonAddress> addresses) {
+		addresses.forEach(cat -> this.addresses.addAll(addresses));
 	}
 
 	public Long getId() {

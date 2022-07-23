@@ -29,7 +29,8 @@ public class Person implements Serializable {
 	private String lastName;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "tb_person_address", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
+	@JoinTable(name = "tb_person_address", joinColumns = @JoinColumn(name = "person_id"), 
+	inverseJoinColumns = @JoinColumn(name = "address_id"))
 	List<PersonAddress> addresses = new ArrayList<>();
 
 	public Person() {}
